@@ -1,5 +1,6 @@
-www/*
-!www/config.xml
+www/app
+www/css
+www/img
 css
 app/built.js
 platforms

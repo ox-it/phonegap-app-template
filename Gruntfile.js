@@ -109,8 +109,7 @@
 		        }
 	        },
           clean: {
-              src: ["www/*", "!www/config.xml"],
-              filter: 'isFile'
+              src: ["www/app", "www/index.html", "www/css", "www/img"],
           },
 	        copy: {
 		        main: {
