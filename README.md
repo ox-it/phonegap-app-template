@@ -23,17 +23,17 @@ npm install -g bower
 npm install -g cordova
 ```
 
-Clone the project
-
+Clone the project:
 ```
 git clone https://github.com/ox-it/phonegap-app-template
 cd phonegap-app-template
+```
+install dependencies:
+```
 npm install
 bower install
-cordova
 ```
-
-####cordova setup
+initialise cordova:
 ```
 cordova platform add ios
 cordova platform add android
