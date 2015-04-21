@@ -116,7 +116,6 @@
 					        expand: true,
 					        src: [
 						        "app/built.js",
-						        "config.xml",
 						        "app/data/**",
 						        "img/**",
 						        "css/**"
