@@ -108,7 +108,7 @@
 			        }
 		        }
 	        },
-	        clean: ["www"],
+	        clean: ["www", "!www/config.xml"],
 	        copy: {
 		        main: {
 			        files: [
