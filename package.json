@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "dependencies": {},
   "devDependencies": {
+    "compass": "^0.1.1",
     "cordova": "~2.9.0",
     "grunt": "~0.4.1",
     "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-compass": "^1.0.3",
     "grunt-contrib-copy": "^0.8.0",
     "grunt-contrib-jshint": "~0.6.0",
     "grunt-contrib-requirejs": "^0.4.4",
