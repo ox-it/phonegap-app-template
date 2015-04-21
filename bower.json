@@ -1,0 +1,14 @@
+{
+  "name": "package",
+  "version": "0.0.0",
+  "dependencies": {},
+  "devDependencies": {
+    "backbone": "~1.1.2",
+    "layoutmanager": "~0.9.6",
+    "jquery": "~2.1.3",
+    "handlebars": "~3.0.2",
+    "requirejs": "~2.1.17",
+    "require-handlebars-plugin": "~0.11.2",
+    "almond": "~0.3.1"
+  }
+}

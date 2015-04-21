@@ -1,0 +1,10 @@
+[
+  {
+    "name": "Example1",
+    "data": "foo"
+  },
+  {
+    "name": "Example2",
+    "data": "bar"
+  }
+]
