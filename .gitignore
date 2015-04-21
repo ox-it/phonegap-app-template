@@ -1,7 +1,7 @@
 www/*
 !www/config.xml
-css
 app/built.js
+css
 platforms
 plugins
 node_modules

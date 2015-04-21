@@ -110,7 +110,7 @@
 	        },
           clean: {
               src: ["www/*", "!www/config.xml"],
-              filter: 'isFile'
+	          filter: 'isFile'
           },
 	        copy: {
 		        main: {
