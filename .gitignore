@@ -1,0 +1,10 @@
+www
+css
+app/built.js
+platforms
+plugins
+node_modules
+.idea
+.jshintrc
+.sass-cache
+.editorconfig
