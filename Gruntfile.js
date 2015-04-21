@@ -108,7 +108,10 @@
 			        }
 		        }
 	        },
-	        clean: ["www", "!www/config.xml"],
+          clean: {
+              src: ["www/*", "!www/config.xml"],
+              filter: 'isFile'
+          },
 	        copy: {
 		        main: {
 			        files: [
