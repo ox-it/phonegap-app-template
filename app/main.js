@@ -2,7 +2,7 @@ define(['backbone', 'layoutmanager', 'app/router/router'],
 	function(Backbone, Layout, Router){
 
 		var App = {
-			onReady: function() {
+			onDeviceReady: function() {
 				console.log("Device ready");
 				//configure Layoutmanager to manage views by default
 				Backbone.Layout.configure({ manage:true });
@@ -18,10 +18,10 @@ define(['backbone', 'layoutmanager', 'app/router/router'],
 			initialize: function() {
 				if (typeof(device) !== 'undefined') {
 					//wait for device ready event
-					document.addEventListener('deviceready', onReady, false);
+					document.addEventListener('deviceready', onDeviceReady, false);
 				} else {
 					//immediately ready in desktop browser
-					this.onReady();
+					this.onDeviceReady();
 				}
 			}
 		};

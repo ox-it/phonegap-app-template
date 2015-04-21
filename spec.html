@@ -28,14 +28,17 @@
         <script type="text/javascript" src="spec/lib/jasmine-1.2.0/jasmine-html.js"></script>
 
         <!-- include source files here... -->
-        <script type="text/javascript" src="../app/main.js"></script>
+        <!--<script type="text/javascript" src="../app/main.js"></script>-->
+        <script data-main="require.config.js" type="text/javascript" src="app/libs/requirejs/require.js"></script>
 
         <!-- include spec files here... -->
-        <script type="text/javascript" src="spec/helper.js"></script>
-        <script type="text/javascript" src="spec/index.js"></script>
+        <!--<script type="text/javascript" src="spec/helper.js"></script>-->
+        <!--<script type="text/javascript" src="spec/index.js"></script>-->
 
         <script type="text/javascript">
-            (function() {
+            require(['spec/index.js'], function(InitTests) {
+	            InitTests();
+
                 var jasmineEnv = jasmine.getEnv();
                 jasmineEnv.updateInterval = 1000;
 
@@ -49,6 +52,8 @@
 
                 var currentWindowOnload = window.onload;
 
+	            execJasmine();
+
                 window.onload = function() {
                     if (currentWindowOnload) {
                         currentWindowOnload();
@@ -59,7 +64,7 @@
                 function execJasmine() {
                     jasmineEnv.execute();
                 }
-            })();
+            });
         </script>
     </head>
     <body>
