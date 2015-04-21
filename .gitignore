@@ -1,8 +1,7 @@
-www/app
-www/css
-www/img
-css
+www/*
+!www/config.xml
 app/built.js
+css
 platforms
 plugins
 node_modules
