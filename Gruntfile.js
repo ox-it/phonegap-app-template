@@ -139,7 +139,8 @@
 				        '!app/libs/**',
 			        ],
 			        options: {
-				        specs: 'spec/*.js',
+				        specs: 'spec/index.js',
+				        helpers: 'spec/helper.js',
 				        template: require('grunt-template-jasmine-requirejs'),
 				        templateOptions: {
 					        requireConfigFile: './require.config.js'
