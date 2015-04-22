@@ -17,18 +17,15 @@
  * under the License.
  */
 
-var app = require('app/main');
+var helper = {
+    trigger: function(obj, name) {
+        var e = document.createEvent('Event');
+        e.initEvent(name, true, true);
+        obj.dispatchEvent(e);
+    },
+    getComputedStyle: function(querySelector, property) {
+        var element = document.querySelector(querySelector);
+        return window.getComputedStyle(element).getPropertyValue(property);
+    }
+};
 
-describe('app', function () {
-	describe('initialize', function () {
-		beforeEach(function() {
-			spyOn(app, 'onDeviceReady');
-			app.initialize();
-			helper.trigger(document, 'deviceready');
-		});
-		it('should bind deviceready', function () {
-			expect(app.onDeviceReady).toHaveBeenCalled();
-			expect(app.onDeviceReady.calls.count()).toEqual(1);
-		});
-	});
-});
