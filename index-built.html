@@ -32,13 +32,11 @@
     </head>
     <body>
 		<div class="example"></div>
-    <script>
-	    console.log("Loaded html built");
-	    require(['app/main'], function(App) {
-		    console.log("required app/main");
-			App.initialize();
-		})
-    </script>
+	    <script>
+		    require(['app/main'], function(App) {
+				App.initialize();
+			})
+	    </script>
     </body>
 
 </html>
