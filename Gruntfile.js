@@ -130,6 +130,22 @@
 				        }
 			        ]
 		        }
+	        },
+            jasmine: {
+		        testTask: {
+			        src: [
+				        'app/**/*.js',
+				        '!app/built.js',
+				        '!app/libs/**',
+			        ],
+			        options: {
+				        specs: 'spec/*.js',
+				        template: require('grunt-template-jasmine-requirejs'),
+				        templateOptions: {
+					        requireConfigFile: './require.config.js'
+				        }
+			        }
+		        }
 	        }
         });
 

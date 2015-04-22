@@ -17,41 +17,30 @@
  * under the License.
  */
 
-define(['app/main'], function(app) {
+var helper = {
+    trigger: function(obj, name) {
+        var e = document.createEvent('Event');
+        e.initEvent(name, true, true);
+        obj.dispatchEvent(e);
+    },
+    getComputedStyle: function(querySelector, property) {
+        var element = document.querySelector(querySelector);
+        return window.getComputedStyle(element).getPropertyValue(property);
+    }
+};
 
-	var helper = {
-	    trigger: function(obj, name) {
-	        var e = document.createEvent('Event');
-	        e.initEvent(name, true, true);
-	        obj.dispatchEvent(e);
-	    },
-	    getComputedStyle: function(querySelector, property) {
-	        var element = document.querySelector(querySelector);
-	        return window.getComputedStyle(element).getPropertyValue(property);
-	    }
-	};
+var app = require('app/main');
 
-	var Test = function() {
-		describe('app', function () {
-			describe('initialize', function () {
-				it('should bind deviceready', function () {
-					runs(function () {
-						spyOn(app, 'onDeviceReady');
-						app.initialize();
-						helper.trigger(window.document, 'deviceready');
-					});
-
-					waitsFor(function () {
-						return (app.onDeviceReady.calls.length > 0);
-					}, 'onDeviceReady should be called once', 500);
-
-					runs(function () {
-						expect(app.onDeviceReady).toHaveBeenCalled();
-					});
-				});
-			});
+describe('app', function () {
+	describe('initialize', function () {
+		beforeEach(function() {
+			spyOn(app, 'onDeviceReady');
+			app.initialize();
+			helper.trigger(document, 'deviceready');
 		});
-	};
-
-	return Test;
+		it('should bind deviceready', function () {
+			expect(app.onDeviceReady).toHaveBeenCalled();
+			expect(app.onDeviceReady.calls.count()).toEqual(1);
+		});
+	});
 });

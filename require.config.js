@@ -27,6 +27,4 @@ require.config({
 	}
 });
 
-require(['app/main'], function(App) {
-	App.initialize();
-})
+require(['app/main']);

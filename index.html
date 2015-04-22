@@ -32,5 +32,16 @@
     </head>
     <body>
 		<div class="example"></div>
+        <script>
+            require(['app/main'], function(App) {
+	            //initialize the app
+	            App.initialize();
+
+                //send the device ready event
+	            var e = document.createEvent('Event');
+	            e.initEvent('deviceready', true, true);
+	            document.dispatchEvent(e);
+            });
+        </script>
     </body>
 </html>
