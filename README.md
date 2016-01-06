@@ -32,26 +32,14 @@ cordova setup
 ```
 This grunt command adds all platforms and plugins listed in the arrays in Gruntfile.js
 
-### Run on device
-build and runs all installed platforms on attached devices:
+### Run
+Build & run on device or emulator with the following grunt tasks
 ```
-grunt device
+grunt ios
+grunt ios-sim
+grunt android
+grunt android-sim
 ```
-build and runs all platforms on simulator/emulato:
-```
-grunt emulate
-```
-
-Add a platform option to specify a single platform:
-```
-grunt device --platform=ios
-```
-
-
-Or use specific task for either ios or android to device
-`grunt ios`: builds and runs on ios device
-`grunt android`: builds and runs on android device
-
 
 ## Customising
 Duplicate and modify the example Model, Collection, View, Template and Router.
