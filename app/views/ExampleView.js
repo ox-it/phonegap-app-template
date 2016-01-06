@@ -1,4 +1,10 @@
-define(['backbone', 'hbs!app/templates/example_template'], function(Backbone, exampleTemplate) {
+define([
+			'backbone', 
+			'hbs!app/templates/example_template'
+		], function(
+			Backbone, 
+			exampleTemplate
+) {
 
 	var ExampleView = Backbone.View.extend({
 

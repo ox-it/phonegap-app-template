@@ -1,5 +1,14 @@
-define(['backbone', 'underscore', 'layoutmanager', 'app/router/router'],
-	function(Backbone, _, Layout, Router){
+define([
+			'backbone', 
+			'underscore', 
+			'layoutmanager', 
+			'app/router/router'
+		], function(
+			Backbone, 
+			_, 
+			Layout, 
+			Router
+){
 
 		var App = {
 			onDeviceReady: function() {

@@ -163,7 +163,8 @@
             cordovacli: {
                 options: {
                     path: '.',
-                    cli: 'cordova'
+                    cli: 'cordova',
+                    platforms: [device.platform]
                 },
                 build: {
                     options: {
@@ -179,6 +180,20 @@
                 emulate: {
                     options: {
                         command: 'run'
+                    }
+                },
+                ios: {
+                    options: {
+                        command: 'run',
+                        args: ['--device'],
+                        platforms: ['ios']
+                    }
+                },
+                android: {
+                    options: {
+                        command: 'run',
+                        args: ['--device'],
+                        platforms: ['android']
                     }
                 },
                 add_plugins: {
@@ -206,6 +221,18 @@
             'cordovacli:device'
         ]);
 
+        grunt.registerTask('ios', [
+            'package',
+            'cordovacli:build',
+            'cordovacli:ios'
+        ]);
+        
+        grunt.registerTask('android', [
+            'package',
+            'cordovacli:build',
+            'cordovacli:android'
+        ]);
+        
         grunt.registerTask('emulate', ['cordova-buildemulate']);
 
         grunt.registerTask('device', ['cordova-buildrun']);
@@ -218,8 +245,5 @@
         grunt.registerTask('platforms', 'cordovacli:add_platforms');
         grunt.registerTask('setup', ['cordovacli:add_platforms', 'cordovacli:add_plugins'] );
 
-
-	    grunt.loadNpmTasks('grunt-contrib-requirejs');
-	    grunt.loadNpmTasks('grunt-contrib-compass');
     };
 }());

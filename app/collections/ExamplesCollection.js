@@ -1,4 +1,12 @@
-define(['backbone', 'underscore', 'app/models/ExampleModel'], function(Backbone, _, ExampleModel) {
+define([
+			'backbone', 
+			'underscore', 
+			'app/models/ExampleModel'
+		], function(
+			Backbone, 
+			_, 
+			ExampleModel
+) {
 
 	var ExamplesCollection = Backbone.Collection.extend({
 

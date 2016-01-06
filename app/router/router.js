@@ -1,4 +1,12 @@
-define(['backbone', 'app/collections/ExamplesCollection', 'app/views/ExampleView'], function(Backbone, ExamplesCollection, ExampleView){
+define([
+			'backbone', 
+			'app/collections/ExamplesCollection', 
+			'app/views/ExampleView'
+		], function(
+			Backbone, 
+			ExamplesCollection, 
+			ExampleView
+){
 
 	var Router = Backbone.Router.extend({
 
