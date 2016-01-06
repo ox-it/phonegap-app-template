@@ -1,6 +1,18 @@
 (function () {
     'use strict';
     var cordova = require('cordova');
+    
+    var plugins = [
+        'cordova-plugin-device',
+        //add further plugins here
+    ]
+    
+    var platforms = [
+        'ios',
+        'android'
+        //add further platforms here
+    ]
+    
 
     module.exports = function (grunt) {
         // load all grunt tasks
@@ -147,126 +159,64 @@
 				        }
 			        }
 		        }
-	        }
-        });
-
-        // Cordova Tasks
-        grunt.registerTask('cordova-prepare', 'Cordova prepare tasks', function () {
-            var done = this.async();
-
-            if (device.platform === 'all') {
-                // Prepare all platforms
-                cordova.prepare(done);
-            } else {
-                cordova.prepare(device.platform, done);
-            }
-        });
-
-        grunt.registerTask('cordova-build', 'Cordova building tasks', function () {
-            var done = this.async();
-
-            if (device.platform === 'all') {
-                // Build all platforms
-                cordova.build(done);
-            } else {
-                cordova.build(device.platform, done);
-            }
-        });
-
-        grunt.registerTask('cordova-run', 'Cordova running tasks', function () {
-            var done = this.async();
-
-            if (device.platform === 'all') {
-                // Build all platforms
-                cordova.run();
-            } else {
-                cordova.run(device.platform);
-            }
-
-            done();
-        });
-
-        grunt.registerTask('cordova-emulate', 'Cordova emulation tasks', function () {
-            var done = this.async();
-
-            if (device.platform === 'all') {
-                // Emulate all platforms
-                cordova.emulate();
-            } else {
-                if (device.platform === 'ios') {
-                    grunt.task.run('shell:iossimstart');
-                } else {
-                    cordova.emulate(device.platform, function() {
-                        grunt.task.run('cordova-emulate-end');
-                    });
+	        },
+            cordovacli: {
+                options: {
+                    path: '.',
+                    cli: 'cordova'
+                },
+                build: {
+                    options: {
+                        command: 'build'
+                    }
+                },
+                device: {
+                    options: {
+                        command: 'run',
+                        args: ['--device']
+                    }
+                },
+                emulate: {
+                    options: {
+                        command: 'run'
+                    }
+                },
+                add_plugins: {
+                    command: 'plugin',
+                    action: 'add',  
+                    plugins: plugins,
+                },
+                add_platforms: {
+                    command: 'platform',
+                    action: 'add',
+                    platforms: platforms 
                 }
-            }
-
-            done();
-        });
-
-        grunt.registerTask('cordova-serve', 'Cordova serve tasks', function () {
-            var done = this.async();
-
-            if (device.platform === 'all') {
-                // Emulate all platforms
-                grunt.fatal("Platform required. Eg. ` --platform=ios`");
-            } else {
-                cordova.serve(device.platform);
-                done();
-            }
-        });
-
-        grunt.registerTask('cordova-ripple', 'Cordova ripple tasks', function () {
-            var done = this.async();
-
-            if (device.platform === 'all') {
-                // Emulate all platforms
-                grunt.fatal("Platform required. Eg. ` --platform=ios`");
-            } else {
-                cordova.ripple(device.platform);
-                done();
-            }
-        });
-
-        grunt.registerTask('cordova-emulate-end', 'Cordova emulation tasks', function () {
-            if (device.platform === 'all' || device.platform === 'ios') {
-                grunt.task.run('shell:iossimend');
             }
         });
 
         grunt.registerTask('cordova-buildemulate', [
 	        'package',
-            'cordova-build',
-            'cordova-emulate'
+            'cordovacli:build',
+            'cordovacli:emulate'
         ]);
 
         grunt.registerTask('cordova-buildrun', [
 	        'package',
-            'cordova-build',
-            'cordova-run'
+            'cordovacli:build',
+            'cordovacli:device'
         ]);
-
-        grunt.registerTask('cordova-prepareserve', [
-	        'package',
-            'cordova-prepare',
-            'cordova-serve'
-        ]);
-
-        grunt.registerTask('serve', ['cordova-prepareserve', 'watch:liveserve']);
-        grunt.registerTask('ripple', ['cordova-prepare', 'cordova-ripple', 'watch:liveripple']);
 
         grunt.registerTask('emulate', ['cordova-buildemulate']);
-        grunt.registerTask('live-emulate', ['cordova-buildemulate', 'watch:liveemulate']);
 
         grunt.registerTask('device', ['cordova-buildrun']);
-        grunt.registerTask('live-device', ['cordova-buildrun', 'watch:livedevice']);
 
-        grunt.registerTask('default', ['serve']);
+        grunt.registerTask('default', ['emulate']);
 
-	    //
 	    grunt.registerTask('package', 'prepare file for building', ['clean', 'requirejs', 'compass', 'copy'])
 
+        grunt.registerTask('plugins', 'cordovacli:add_plugins');
+        grunt.registerTask('platforms', 'cordovacli:add_platforms');
+        grunt.registerTask('setup', ['cordovacli:add_platforms', 'cordovacli:add_plugins'] );
 
 
 	    grunt.loadNpmTasks('grunt-contrib-requirejs');

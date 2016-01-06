@@ -1,5 +1,5 @@
 define(['backbone', 'underscore', 'layoutmanager', 'app/router/router'],
-	function(Backbone, Layout, Router){
+	function(Backbone, _, Layout, Router){
 
 		var App = {
 			onDeviceReady: function() {
@@ -12,13 +12,16 @@ define(['backbone', 'underscore', 'layoutmanager', 'app/router/router'],
 				//create router
 				var router = new Router();
 
-				//start the app
-				Backbone.history.start();
-				console.log("Started the app");
+				if(this.onReady) {
+					this.onReady();
+				}
 			},
 
-			initialize: function(cb) {
-				document.addEventListener('deviceready', _.bind(this.onDeviceReady, this), false);
+			initialize: function(onReady) {
+				//wait for device ready event. This is fired from the html when not on a device.
+				//takes a custom callback to call when the app is ready
+				this.onReady = onReady;
+				document.addEventListener('deviceready', _.bind(this.onDeviceReady,this), false);
 			}
 		};
 

@@ -4,12 +4,15 @@ define(['backbone', 'app/collections/ExamplesCollection', 'app/views/ExampleView
 
 		initialize: function() {
 
+				//start the app
+				Backbone.history.start();
+				console.log("Started the app");
+
 		},
 
 		routes: {
 			"": "home"
 		},
-
 
 		///routes
 		home: function() {
@@ -21,7 +24,6 @@ define(['backbone', 'app/collections/ExamplesCollection', 'app/views/ExampleView
 				var exampleView = new ExampleView({el:$('.example'), model:anExample});
 				exampleView.render();
 			}.bind(this)});
-
 			//End Example
 		}
 
