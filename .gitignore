@@ -1,5 +1,4 @@
 www/*
-!www/config.xml
 app/built.js
 app/libs
 css

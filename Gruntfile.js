@@ -121,7 +121,7 @@
 		        }
 	        },
           clean: {
-              src: ["www/*", "!www/config.xml"],
+              src: ["www/*"],
 	          filter: 'isFile'
           },
 	        copy: {
@@ -133,7 +133,8 @@
 						        "app/built.js",
 						        "app/data/**",
 						        "img/**",
-						        "css/**"
+						        "css/**",
+						        "config.xml"
 					        ],
 					        dest:"www" },
 				        {
@@ -222,7 +223,7 @@
         
         grunt.registerTask('ios', [
             'package',
-            'cordovacli:build-ios',
+            'cordovacli:build_ios',
             'cordovacli:ios'
         ]);
         

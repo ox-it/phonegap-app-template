@@ -1,7 +1,9 @@
 {
   "name": "package",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "cordova": "^6.3.1"
+  },
   "devDependencies": {
     "compass": "^0.1.1",
     "cordova": "~2.9.0",
@@ -16,6 +18,6 @@
     "grunt-shell": "~0.3.0",
     "grunt-template-jasmine-requirejs": "^0.2.3",
     "matchdep": "~0.1.1",
-    "grunt-cordovacli": "^0.8.2",
+    "grunt-cordovacli": "^0.8.2"
   }
 }
