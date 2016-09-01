@@ -87,6 +87,13 @@
 
             },
             shell: {
+                hcpserver: {
+                    command: 'cordova-hcp server',
+                    options: {
+                      stderr: true,
+                      stdout: true
+                    }
+                },
                 iossimstart: {
                     command: 'ios-sim launch platforms/ios/build/yoco.app --exit' + (device.family !== 'default' ? ' --family ' + device.family : ''),
                     options: {
@@ -229,6 +236,7 @@
         });
         
         grunt.loadNpmTasks('grunt-contrib-watch');
+        grunt.registerTask('default', ['shell']);
         
         grunt.registerTask('ios', [
             'package',
@@ -258,7 +266,7 @@
            grunt.task.run('compass');
            grunt.task.run('clean');
            grunt.task.run('copy:dev');
-           // hot-push server must start
+           grunt.task.run('shell:hcpserver');
         });
 
         grunt.registerTask('devrun', "Run the app on the device, listen to hot-push server for changes", function(arg) {
