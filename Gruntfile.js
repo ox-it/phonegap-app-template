@@ -2,11 +2,6 @@
     'use strict';
     var cordova = require('cordova');
     
-    var plugins = [
-        'cordova-plugin-device',
-        //add further plugins here
-    ]
-    
     var platforms = [
         'ios',
         'android@3.7.1'
@@ -204,13 +199,6 @@
                         platforms: ['ios']
                     }
                 },
-                add_plugins: {
-                    options: {
-                        command: 'plugin',
-                        action: 'add',  
-                        plugins: plugins,
-                    }
-                },
                 add_platforms: {
                     options: {
                         command: 'platform',
@@ -250,9 +238,7 @@
 
 	    grunt.registerTask('package', 'prepare file for building', ['clean', 'requirejs', 'compass', 'copy'])
 
-        grunt.registerTask('plugins', 'cordovacli:add_plugins');
         grunt.registerTask('platforms', 'cordovacli:add_platforms');
-        grunt.registerTask('setup', ['cordovacli:add_platforms', 'cordovacli:add_plugins'] );
 
     };
 }());
