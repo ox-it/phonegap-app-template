@@ -137,7 +137,20 @@
 					        dest: "www/index.html"
 				        }
 			        ]
-		        }
+		        },
+            dev: {
+              files: [
+                {   expand: true,
+                    src: ["app/**",
+                        "css/**"
+                        ],
+                    dest: "www" },
+                {   src: ["require.config.js"],
+                    dest: "www/require.config.js" },
+                {   src: ["index.html"],
+                    dest: "www/index.html" }
+              ]
+            }
 	        },
             jasmine: {
 		        testTask: {
@@ -233,10 +246,22 @@
             'cordovacli:emulate_android'
         ]);
 
+        grunt.registerTask('devbuild', "Copy app folder to www. Start the hot-push server", function(arg) {
+           grunt.task.run('compass');
+           grunt.task.run('clean');
+           grunt.task.run('copy:dev');
+           // hot-push server must start
+        });
 
+        grunt.registerTask('devrun', "Run the app on the device, listen to hot-push server for changes", function(arg) {
+          if (!arg) { arg='ios'; }
+          grunt.task.run('cordovacli:' + arg);
+          // watch for changes in app and update www/app
+        });
+        
         grunt.registerTask('default', ['emulate']);
 
-	    grunt.registerTask('package', 'prepare file for building', ['clean', 'requirejs', 'compass', 'copy'])
+        grunt.registerTask('package', 'prepare file for building', ['clean', 'requirejs', 'compass', 'copy']);
 
         grunt.registerTask('platforms', 'cordovacli:add_platforms');
 
