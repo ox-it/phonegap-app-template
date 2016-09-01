@@ -1,14 +1,20 @@
 define([
 			'backbone', 
-			'hbs!app/templates/example_template'
+			'hbs!app/templates/example_template',
+			'jsx!app/jsxcomponents/example',
+			'react', 'reactDOM'
 		], function(
 			Backbone, 
-			exampleTemplate
+			exampleTemplate,
+			exampleComponent,
+			React, ReactDOM
 ) {
 
 	var ExampleView = Backbone.View.extend({
 
-		template: exampleTemplate,
+		template: exampleComponent,
+		
+		component: exampleComponent,
 
 		initialize: function(params) {
 			//initialisation of view from params
@@ -19,6 +25,13 @@ define([
 			//serialize relevant model data to send to template
 			var data = this.model.toJSON();
 			return data;
+		},
+
+		render: function () {
+			if(this.beforeRender){this.beforeRender();}
+			console.log("RENDERING the example view")
+			ReactDOM.render(React.createElement (this.component, this.serialize()), this.el);
+			if(this.afterRender){this.afterRender();}
 		},
 
 		events: {},

@@ -1,7 +1,11 @@
 {
   "name": "package",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "jsx-requirejs-plugin": "^0.6.2",
+    "react": "^15.3.1",
+    "text": "requirejs-text#^2.0.15"
+  },
   "devDependencies": {
     "backbone": "~1.1.2",
     "layoutmanager": "~0.9.6",

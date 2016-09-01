@@ -16,6 +16,6 @@
     "grunt-shell": "~0.3.0",
     "grunt-template-jasmine-requirejs": "^0.2.3",
     "matchdep": "~0.1.1",
-    "grunt-cordovacli": "^0.8.2",
+    "grunt-cordovacli": "^0.8.2"
   }
 }

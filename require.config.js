@@ -14,6 +14,11 @@ require.config({
 	    underscore: "app/libs/underscore/underscore",
 	    layoutmanager: "app/libs/layoutmanager/backbone.layoutmanager",
 	    hbs: "app/libs/require-handlebars-plugin/hbs",
+		JSXTransformer: "app/libs/jsx-requirejs-plugin/js/JSXTransformer",
+		jsx: "app/libs/jsx-requirejs-plugin/js/jsx",
+		text: "app/libs/text/text",
+		react: "app/libs/react/react-with-addons",
+		reactDOM: "app/libs/react/react-dom"
 	},
 	packages: [
 
@@ -24,7 +29,11 @@ require.config({
 		i18n: false,
 		templateExtension: 'handlebars',
 		partialsUrl: ''
-	}
+	},
+	jsx: {
+		fileExtension: '.jsx'	
+	},
+	stubModules: ['jsx', 'text', 'JSXTransformer']
 });
 
 require(['app/main']);
