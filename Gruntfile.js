@@ -59,6 +59,12 @@
                     ],
                     tasks: ['jshint']
                 },
+                appfiles: {
+                  files: [
+                      'app/**/*',
+                  ],
+                  tasks: ['copy:dev']
+                },
                 liveserve: {
                     options: {
                         livereload: true,
@@ -222,6 +228,8 @@
             }
         });
         
+        grunt.loadNpmTasks('grunt-contrib-watch');
+        
         grunt.registerTask('ios', [
             'package',
             'cordovacli:build_ios',
@@ -256,7 +264,7 @@
         grunt.registerTask('devrun', "Run the app on the device, listen to hot-push server for changes", function(arg) {
           if (!arg) { arg='ios'; }
           grunt.task.run('cordovacli:' + arg);
-          // watch for changes in app and update www/app
+          grunt.task.run('watch:appfiles');
         });
         
         grunt.registerTask('default', ['emulate']);
