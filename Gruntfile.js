@@ -75,6 +75,12 @@
               },
               startServerWatch: {
                 tasks: ["wait:develRunAndroid", "wait:develRunIos","shell:hcpserver", "watch:styles", "watch:appfiles"]
+              },
+              startServerWatchAndroid: {
+                tasks: ["wait:develRunAndroid", "shell:hcpserver", "watch:styles", "watch:appfiles"]
+              },
+              startServerWatchIos: {
+                tasks: ["wait:develRunIos", "shell:hcpserver", "watch:styles", "watch:appfiles"]
               }
             },
             watch: {
@@ -293,7 +299,15 @@
            grunt.task.run('compass');
            grunt.task.run('clean');
            grunt.task.run('copy:devel');
-           grunt.task.run('concurrent:startServerWatch');
+           if (!arg) {
+             grunt.task.run('concurrent:startServerWatch');
+           } else if (arg=='android') {
+             grunt.task.run('concurrent:startServerWatchAndroid');
+           } else if (arg=='ios') {
+             grunt.task.run('concurrent:startServerWatchIos');
+           }
+           
+           
         });
 
         grunt.registerTask('develrun', "Run the app on the device, listen to hot-push server for changes", function(arg) {
@@ -312,7 +326,10 @@
         // grunt ios-> build app on ios device
         
         // to use the hot-code-push plugin
-        // grunt devel-> compass, copy app and css files to www, start the server, start the clients
+        // grunt devel-> compass, copy app and css files to www, start the server, start the client
+        // grunt devel:android-> compass, copy app and css files to www, start the server, start the android client
+        // grunt devel:ios-> compass, copy app and css files to www, start the server, start the ios client
+        
         // grunt develrun:android-> start android client
         // grunt develrun:ios-> start ios client
     };
