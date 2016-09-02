@@ -8,6 +8,7 @@
     "compass": "^0.1.1",
     "cordova": "~2.9.0",
     "grunt": "~0.4.1",
+    "grunt-concurrent": "^2.3.1",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-compass": "^1.0.3",
     "grunt-contrib-copy": "^0.8.0",
@@ -18,6 +19,7 @@
     "grunt-cordovacli": "^0.8.2",
     "grunt-shell": "^0.3.1",
     "grunt-template-jasmine-requirejs": "^0.2.3",
+    "grunt-wait": "^0.1.0",
     "matchdep": "~0.1.1"
   }
 }

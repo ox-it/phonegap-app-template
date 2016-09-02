@@ -51,6 +51,32 @@
 	                'sass/*.scss'
                 ]
             },
+            wait: {
+              develRunAndroid: {      
+                  options: {
+                      delay: 2000,
+                      after : function() {
+                          grunt.task.run('develrun:android');
+                      }
+                  }
+              },
+              develRunIos: {      
+                  options: {
+                      delay: 2000,
+                      after : function() {
+                          grunt.task.run('develrun:ios');
+                      }
+                  }
+              }
+            },
+            concurrent: {
+              options: {
+                logConcurrentOutput: true
+              },
+              startServerWatch: {
+                tasks: ["wait:develRunAndroid", "wait:develRunIos","shell:hcpserver", "watch:styles", "watch:appfiles"]
+              }
+            },
             watch: {
                 scripts: {
                     files: [
@@ -62,8 +88,9 @@
                 appfiles: {
                   files: [
                       'app/**/*',
+                      'css/*',
                   ],
-                  tasks: ['copy:dev']
+                  tasks: ['copy:devel']
                 },
                 liveserve: {
                     options: {
@@ -151,11 +178,11 @@
 				        }
 			        ]
 		        },
-            dev: {
+            devel: {
               files: [
                 {   expand: true,
                     src: ["app/**",
-                        "css/**"
+                          "css/**"
                         ],
                     dest: "www" },
                 {   src: ["require.config.js"],
@@ -262,24 +289,31 @@
             'cordovacli:emulate_android'
         ]);
 
-        grunt.registerTask('devbuild', "Copy app folder to www. Start the hot-push server", function(arg) {
+        grunt.registerTask('devel', "Copy app folder to www. Start the hot-push server. Watch for changes in the App folder", function(arg) {
            grunt.task.run('compass');
            grunt.task.run('clean');
-           grunt.task.run('copy:dev');
-           grunt.task.run('shell:hcpserver');
+           grunt.task.run('copy:devel');
+           grunt.task.run('concurrent:startServerWatch');
         });
 
-        grunt.registerTask('devrun', "Run the app on the device, listen to hot-push server for changes", function(arg) {
-          if (!arg) { arg='ios'; }
-          grunt.task.run('cordovacli:' + arg);
-          grunt.task.run('watch:appfiles');
+        grunt.registerTask('develrun', "Run the app on the device, listen to hot-push server for changes", function(arg) {
+          if (!arg) { arg='android'; }
+          grunt.task.run('cordovacli:'+ arg);
         });
-        
+
         grunt.registerTask('default', ['emulate']);
 
         grunt.registerTask('package', 'prepare file for building', ['clean', 'requirejs', 'compass', 'copy']);
 
         grunt.registerTask('platforms', 'cordovacli:add_platforms');
-
+        
+        // to build app on Device
+        // grunt android-> build app on android device
+        // grunt ios-> build app on ios device
+        
+        // to use the hot-code-push plugin
+        // grunt devel-> compass, copy app and css files to www, start the server, start the clients
+        // grunt develrun:android-> start android client
+        // grunt develrun:ios-> start ios client
     };
 }());
