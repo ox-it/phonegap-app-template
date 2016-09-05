@@ -40,6 +40,26 @@ grunt ios-sim
 grunt android
 grunt android-sim
 ```
+### Start hot-code-push server and run app
+Start hot-code-push server and build & run on device (using the hot-code-push plugin) with the following grunt tasks
+```
+grunt devel:android
+grunt devel:ios
+```
+
+The app can be deployed to additional devices without restarting the hot-code-push server with the following grunt tasks
+```
+grunt develrun:android
+grunt develrun:ios
+```
+
+### Opt out of the hot-code-push.
+A project can opt out of the hot-code-push if the plugins are uninstalled
+``
+cordova plugin remove cordova-hot-code-push --save
+cordova plugin remove cordova-hot-code-push-local-dev-addon --save
+```
+
 
 ## Customising
 Duplicate and modify the example Model, Collection, View, Template and Router.
