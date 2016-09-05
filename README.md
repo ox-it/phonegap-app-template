@@ -45,5 +45,7 @@ grunt android-sim
 Duplicate and modify the example Model, Collection, View, Template and Router.
 
 #### Adding plugins
-1. Add the plugin to the array in the top of Gruntfile.js
-2. Run `grunt plugins`
+Add cordova plugins using --save flag:
+```
+cordova plugin add cordova-plugin-device --save
+```
