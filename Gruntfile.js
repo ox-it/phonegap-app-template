@@ -51,6 +51,38 @@
 	                'sass/*.scss'
                 ]
             },
+            wait: {
+              develRunAndroid: {      
+                  options: {
+                      delay: 2000,
+                      after : function() {
+                          grunt.task.run('develrun:android');
+                      }
+                  }
+              },
+              develRunIos: {      
+                  options: {
+                      delay: 2000,
+                      after : function() {
+                          grunt.task.run('develrun:ios');
+                      }
+                  }
+              }
+            },
+            concurrent: {
+              options: {
+                logConcurrentOutput: true
+              },
+              startServerWatch: {
+                tasks: ["wait:develRunAndroid", "wait:develRunIos","shell:hcpserver", "watch:styles", "watch:appfiles"]
+              },
+              startServerWatchAndroid: {
+                tasks: ["wait:develRunAndroid", "shell:hcpserver", "watch:styles", "watch:appfiles"]
+              },
+              startServerWatchIos: {
+                tasks: ["wait:develRunIos", "shell:hcpserver", "watch:styles", "watch:appfiles"]
+              }
+            },
             watch: {
                 scripts: {
                     files: [
@@ -58,6 +90,13 @@
                         'www/css/**/*.css'
                     ],
                     tasks: ['jshint']
+                },
+                appfiles: {
+                  files: [
+                      'app/**/*',
+                      'css/*',
+                  ],
+                  tasks: ['copy:devel']
                 },
                 liveserve: {
                     options: {
@@ -81,6 +120,13 @@
 
             },
             shell: {
+                hcpserver: {
+                    command: 'cordova-hcp server',
+                    options: {
+                      stderr: true,
+                      stdout: true
+                    }
+                },
                 iossimstart: {
                     command: 'ios-sim launch platforms/ios/build/yoco.app --exit' + (device.family !== 'default' ? ' --family ' + device.family : ''),
                     options: {
@@ -137,7 +183,20 @@
 					        dest: "www/index.html"
 				        }
 			        ]
-		        }
+		        },
+            devel: {
+              files: [
+                {   expand: true,
+                    src: ["app/**",
+                          "css/**"
+                        ],
+                    dest: "www" },
+                {   src: ["require.config.js"],
+                    dest: "www/require.config.js" },
+                {   src: ["index.html"],
+                    dest: "www/index.html" }
+              ]
+            }
 	        },
             jasmine: {
 		        testTask: {
@@ -209,6 +268,9 @@
             }
         });
         
+        grunt.loadNpmTasks('grunt-contrib-watch');
+        grunt.registerTask('default', ['shell']);
+        
         grunt.registerTask('ios', [
             'package',
             'cordovacli:build_ios',
@@ -233,12 +295,42 @@
             'cordovacli:emulate_android'
         ]);
 
+        grunt.registerTask('devel', "Copy app folder to www. Start the hot-push server. Watch for changes in the App folder", function(arg) {
+           grunt.task.run('compass');
+           grunt.task.run('clean');
+           grunt.task.run('copy:devel');
+           if (!arg) {
+             grunt.task.run('concurrent:startServerWatch');
+           } else if (arg=='android') {
+             grunt.task.run('concurrent:startServerWatchAndroid');
+           } else if (arg=='ios') {
+             grunt.task.run('concurrent:startServerWatchIos');
+           }
+           
+           
+        });
+
+        grunt.registerTask('develrun', "Run the app on the device, listen to hot-push server for changes", function(arg) {
+          if (!arg) { arg='android'; }
+          grunt.task.run('cordovacli:'+ arg);
+        });
 
         grunt.registerTask('default', ['emulate']);
 
-	    grunt.registerTask('package', 'prepare file for building', ['clean', 'requirejs', 'compass', 'copy'])
+        grunt.registerTask('package', 'prepare file for building', ['clean', 'requirejs', 'compass', 'copy']);
 
         grunt.registerTask('platforms', 'cordovacli:add_platforms');
-
+        
+        // to build app on Device
+        // grunt android-> build app on android device
+        // grunt ios-> build app on ios device
+        
+        // to use the hot-code-push plugin
+        // grunt devel-> compass, copy app and css files to www, start the server, start the client
+        // grunt devel:android-> compass, copy app and css files to www, start the server, start the android client
+        // grunt devel:ios-> compass, copy app and css files to www, start the server, start the ios client
+        
+        // grunt develrun:android-> start android client
+        // grunt develrun:ios-> start ios client
     };
 }());
