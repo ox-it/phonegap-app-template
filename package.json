@@ -5,6 +5,7 @@
     "cordova": "^6.3.1"
   },
   "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
     "compass": "^0.1.1",
     "cordova": "~2.9.0",
     "grunt": "~0.4.1",
@@ -20,6 +21,7 @@
     "grunt-shell": "^0.3.1",
     "grunt-template-jasmine-requirejs": "^0.2.3",
     "grunt-wait": "^0.1.0",
-    "matchdep": "~0.1.1"
+    "matchdep": "~0.1.1",
+    "requirejs-babel": "0.0.9"
   }
 }

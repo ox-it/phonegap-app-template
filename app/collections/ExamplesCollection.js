@@ -1,7 +1,7 @@
 define([
 			'backbone', 
 			'underscore', 
-			'app/models/ExampleModel'
+			'es6!app/models/ExampleModel'
 		], function(
 			Backbone, 
 			_, 
