@@ -1,10 +1,12 @@
 define([
 			'backbone', 
-			'app/collections/ExamplesCollection', 
+			'app/collections/ExamplesCollection',
+			'app/views/AllView',
 			'app/views/ExampleView'
 		], function(
 			Backbone, 
 			ExamplesCollection, 
+			AllView,
 			ExampleView
 ){
 
@@ -13,26 +15,29 @@ define([
 		initialize: function() {
 
 				//start the app
-				Backbone.history.start();
+				this.examples = new ExamplesCollection();
+				this.examples.fetch({success: function () {
+					Backbone.history.start();
+				}});
 				console.log("Started the app");
 
 		},
 
 		routes: {
-			"": "home"
+			"": "home",
+			"thing/:index":"thing"
 		},
 
 		///routes
 		home: function() {
-
-			//Example
-			this.examples = new ExamplesCollection();
-			this.examples.fetch({success: function() {
-				var anExample = this.examples.at(0);
-				var exampleView = new ExampleView({el:$('.example'), model:anExample});
-				exampleView.render();
-			}.bind(this)});
-			//End Example
+			allView = new AllView({el:$('.content'), collection:this.examples});
+			allView.render();
+		},
+		
+		thing: function (i) {
+			var thing = this.examples.at(i);
+			var thingView = new ExampleView({el:$('.content'), model:thing});
+			thingView.render();
 		}
 
 	});

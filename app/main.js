@@ -2,12 +2,14 @@ define([
 			'backbone', 
 			'underscore', 
 			'layoutmanager', 
-			'app/router/router'
+			'app/router/router',
+			'phonon-core'
 		], function(
 			Backbone, 
 			_, 
 			Layout, 
-			Router
+			Router,
+			phonon
 ){
 
 		var App = {

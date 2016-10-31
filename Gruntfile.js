@@ -178,6 +178,20 @@
 						        "config.xml"
 					        ],
 					        dest:"www" },
+                        {
+                            src: ["app/libs/Phonon-Framework/dist/css/phonon.css"],
+                            dest: "www/css/phonon/phonon.css"
+                        },
+                        {
+                            src: ["app/libs/Phonon-Framework/dist/css/components/panels.css"],
+                            dest: "www/css/phonon/panels.css"
+                        },
+                        {
+                            expand: true,
+                            flatten: true,
+                            src: ["app/libs/Phonon-Framework/dist/fonts/*"],
+                            dest: "www/css/fonts"
+                        },
 				        {
 					        src: ["index-built.html"],
 					        dest: "www/index.html"

@@ -1,0 +1,21 @@
+<ul class="list">
+	<li class="divider">
+		Items
+	</li>
+	{{#each items}}
+		<li class="padded-list thing">{{name}} - {{data}}</li>
+	{{/each}}
+</ul>
+
+<div  id="panelTest" class="panel">
+	<header class="header-bar">
+		<div class="btn icon icon-close pull-right" data-panel-close="true"></a>
+		<h1 class="title">Panel</h1>
+	</header>
+	
+	<div class="content">
+		<p class="padded-full">
+			Here is a dismissable popup.
+		</p>
+	</div>
+</div>

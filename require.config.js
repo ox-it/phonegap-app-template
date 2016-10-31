@@ -6,14 +6,16 @@ require.config({
 
 	},
 	paths: {
-	    almond: "app/libs/almond/almond",
-	    backbone: "app/libs/backbone/backbone",
-	    handlebars: "app/libs/handlebars/handlebars",
-	    jquery: "app/libs/jquery/dist/jquery",
-	    requirejs: "app/libs/requirejs/require",
-	    underscore: "app/libs/underscore/underscore",
-	    layoutmanager: "app/libs/layoutmanager/backbone.layoutmanager",
-	    hbs: "app/libs/require-handlebars-plugin/hbs",
+		almond: "app/libs/almond/almond",
+		backbone: "app/libs/backbone/backbone",
+		handlebars: "app/libs/handlebars/handlebars",
+		jquery: "app/libs/jquery/dist/jquery",
+		requirejs: "app/libs/requirejs/require",
+		underscore: "app/libs/underscore/underscore",
+		layoutmanager: "app/libs/layoutmanager/backbone.layoutmanager",
+		hbs: "app/libs/require-handlebars-plugin/hbs",
+		"phonon-core": "app/libs/Phonon-Framework/dist/js/phonon-core",
+		phonon: "app/libs/Phonon-Framework/dist/js/components"
 	},
 	packages: [
 

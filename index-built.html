@@ -28,10 +28,17 @@
         <script src="app/built.js" type="text/javascript"></script>
 
         <link rel="stylesheet" type="text/css" href="css/app.css" />
+        <link rel="stylesheet" type="text/css" href="css/phonon/phonon.css" />
+        <link rel="stylesheet" type="text/css" href="css/phonon/panels.css" />
         <title>Hello World</title>
     </head>
-    <body>
-		<div class="example"></div>
+    <body class="myapp">
+    	<header class="header-bar">
+    		<div class="center">
+    			<h1 class="title">Example</h1>
+    		</div>
+    	</header>
+		<div class="content"></div>
 	    <script>
 		    require(['app/main'], function(App) {
 				App.initialize();

@@ -1,47 +1,55 @@
 <!DOCTYPE html>
 <!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
+	Licensed to the Apache Software Foundation (ASF) under one
+	or more contributor license agreements.  See the NOTICE file
+	distributed with this work for additional information
+	regarding copyright ownership.  The ASF licenses this file
+	to you under the Apache License, Version 2.0 (the
+	"License"); you may not use this file except in compliance
+	with the License.  You may obtain a copy of the License at
 
-    http://www.apache.org/licenses/LICENSE-2.0
+	http://www.apache.org/licenses/LICENSE-2.0
 
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
+	Unless required by applicable law or agreed to in writing,
+	software distributed under the License is distributed on an
+	"AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+	 KIND, either express or implied.  See the License for the
+	specific language governing permissions and limitations
+	under the License.
 -->
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <meta name="format-detection" content="telephone=no" />
-        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
+	<head>
+		<meta charset="utf-8" />
+		<meta name="format-detection" content="telephone=no" />
+		<!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+		<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
 
-        <script data-main="require.config.js" type="text/javascript" src="app/libs/requirejs/require.js"></script>
-        <script src="cordova.js" type="text/javascript"></script>
+		<script data-main="require.config.js" type="text/javascript" src="app/libs/requirejs/require.js"></script>
 
-        <link rel="stylesheet" type="text/css" href="css/app.css" />
-        <title>Hello World</title>
-    </head>
-    <body>
-		<div class="example"></div>
-        <script>
-            require(['app/main'], function(App) {
-	            //initialize the app
-	            App.initialize();
+		<link rel="stylesheet" type="text/css" href="css/app.css" />
+		<link rel="stylesheet" type="text/css" href="app/libs/Phonon-Framework/dist/css/phonon.css" />
+		<link rel="stylesheet" type="text/css" href="app/libs/Phonon-Framework/dist/css/components/panels.css" />
+		<title>Hello World</title>
+	</head>
+	<body class="myapp">
+		<div class="foo">
+			<header class="header-bar">
+				<div class="center">
+					<h1 class="title">Example</h1>
+				</div>
+			</header>
+			<div class="content"></div>
+			<script>
+				require(['app/main'], function(App) {
+					//initialize the app
+					App.initialize();
 
-                //send the device ready event
-	            var e = document.createEvent('Event');
-	            e.initEvent('deviceready', true, true);
-	            document.dispatchEvent(e);
-            });
-        </script>
-    </body>
+					//send the device ready event
+					var e = document.createEvent('Event');
+					e.initEvent('deviceready', true, true);
+					document.dispatchEvent(e);
+				});
+			</script>
+		</div>
+	</body>
 </html>
