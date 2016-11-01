@@ -2,7 +2,7 @@ define([
 			'backbone', 
 			'underscore', 
 			'layoutmanager', 
-			'app/router/router',
+			'es6!app/router/router',
 			'phonon-core'
 		], function(
 			Backbone, 
@@ -16,6 +16,9 @@ define([
 			onDeviceReady: function() {
 				//callback for tests
 				console.log("Device ready");
+
+				//don't allow phonon to take over the window location hash
+				phonon.navigator({useHash:false})
 
 				//configure Layoutmanager to manage views by default
 				Backbone.Layout.configure({ manage:true });

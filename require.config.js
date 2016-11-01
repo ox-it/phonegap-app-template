@@ -14,9 +14,11 @@ require.config({
 		underscore: "app/libs/underscore/underscore",
 		layoutmanager: "app/libs/layoutmanager/backbone.layoutmanager",
 		hbs: "app/libs/require-handlebars-plugin/hbs",
+		es6: "node_modules/requirejs-babel/es6",
+		babel: "node_modules/requirejs-babel/babel-5.8.34.min",
 		"phonon-core": "app/libs/Phonon-Framework/dist/js/phonon-core",
 		phonon: "app/libs/Phonon-Framework/dist/js/components"
-	},
+		},
 	packages: [
 
 	],
@@ -26,7 +28,12 @@ require.config({
 		i18n: false,
 		templateExtension: 'handlebars',
 		partialsUrl: ''
+	},
+	config: {
+		es6: {
+			'modules': undefined,	//treat all transformed modules as amd modules
+		}
 	}
 });
 
-require(['app/main']);
+require(['es6!app/main']);

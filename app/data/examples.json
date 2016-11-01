@@ -1,9 +1,11 @@
 [
   {
+    "id": 1,
     "name": "Example1",
     "data": "foo"
   },
   {
+    "id": 2,
     "name": "Example2",
     "data": "bar"
   }

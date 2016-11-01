@@ -331,7 +331,7 @@
 
         grunt.registerTask('default', ['emulate']);
 
-        grunt.registerTask('package', 'prepare file for building', ['clean', 'requirejs', 'compass', 'copy']);
+        grunt.registerTask('package', 'prepare file for building', ['clean', 'requirejs', 'compass', 'copy:main']);
 
         grunt.registerTask('platforms', 'cordovacli:add_platforms');
         

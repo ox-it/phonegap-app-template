@@ -1,8 +1,8 @@
 define([
 			'backbone', 
 			'app/collections/ExamplesCollection',
-			'app/views/AllView',
-			'app/views/ExampleView'
+			'es6!app/views/AllView',
+			'es6!app/views/ExampleView'
 		], function(
 			Backbone, 
 			ExamplesCollection, 
@@ -13,14 +13,15 @@ define([
 	var Router = Backbone.Router.extend({
 
 		initialize: function() {
-
+			
+				this.contentView = new Backbone.View({el: $('.content')});
+				
 				//start the app
 				this.examples = new ExamplesCollection();
-				this.examples.fetch({success: function () {
+				this.examples.fetch({success: () => {
 					Backbone.history.start();
+					console.log("Started the app");
 				}});
-				console.log("Started the app");
-
 		},
 
 		routes: {
@@ -30,18 +31,19 @@ define([
 
 		///routes
 		home: function() {
-			allView = new AllView({el:$('.content'), collection:this.examples});
+			var allView = new AllView({el:$('.content'), collection:this.examples});
 			allView.render();
 		},
 		
-		thing: function (i) {
-			var thing = this.examples.at(i);
-			var thingView = new ExampleView({el:$('.content'), model:thing});
+		thing: function (id) {
+			var thing = this.examples.get(id);
+			var thingView = new ExampleView({model:thing});
+			this.contentView.setView(thingView);
 			thingView.render();
 		}
 
 	});
 
 	return Router;
-
+	
 });
