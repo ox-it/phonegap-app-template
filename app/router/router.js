@@ -15,7 +15,7 @@ define([
 				//start the app
 				Backbone.history.start();
 				console.log("Started the app");
-
+				this.contentView = new Backbone.View({el: $('.example')});
 		},
 
 		routes: {
@@ -29,7 +29,8 @@ define([
 			this.examples = new ExamplesCollection();
 			this.examples.fetch({success: function() {
 				var anExample = this.examples.at(0);
-				var exampleView = new ExampleView({el:$('.example'), model:anExample});
+				var exampleView = new ExampleView({model:anExample});
+				this.contentView.setView(exampleView);
 				exampleView.render();
 			}.bind(this)});
 			//End Example
