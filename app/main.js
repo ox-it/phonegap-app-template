@@ -2,7 +2,7 @@ define([
 			'backbone', 
 			'underscore', 
 			'layoutmanager', 
-			'app/router/router'
+			'es6!app/router/router'
 		], function(
 			Backbone, 
 			_, 
