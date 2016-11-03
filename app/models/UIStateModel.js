@@ -30,7 +30,7 @@ define([
 			links: [
 				{
 					label: "Home",
-					route: "home",
+					route: "",
 					current: false
 				},
 			]

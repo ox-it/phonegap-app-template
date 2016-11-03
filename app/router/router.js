@@ -80,8 +80,7 @@ define([
 		thing: function (id) {
 			App.UIStateModel.set({ 
 				showBack: true,
-				confirmBack: true,
-				backLabel: 'Back',
+				confirmBack: false,
 				showNavMenuButton: true,
 				actionButton: false,
 			});
