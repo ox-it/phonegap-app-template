@@ -3,6 +3,7 @@ define([
 			'es6!app/models/UIStateModel',
 			'es6!app/collections/ExamplesCollection',
 			'es6!app/views/HeaderView',
+			'es6!app/views/NavMenuView',
 			'es6!app/views/AllView',
 			'es6!app/views/ExampleView'
 		], function(
@@ -10,6 +11,7 @@ define([
 			UIStateModel,
 			ExamplesCollection,
 			HeaderView,
+			NavMenuView,
 			AllView,
 			ExampleView
 ){
@@ -21,6 +23,8 @@ define([
 				App.UIStateModel = new UIStateModel();
 				this.headerView = new HeaderView({ el:$('#header'), model:App.UIStateModel });
 				this.headerView.render();
+				this.navMenuView = new NavMenuView({ el:$('#side-menu'), model:App.UIStateModel });
+				this.navMenuView.render();
 				this.contentView = new Backbone.View({el: $('.content')});
 				
 				//start the app
@@ -29,6 +33,8 @@ define([
 					Backbone.history.start();
 					console.log("Started the app");
 				}});
+				var appp = phonon.navigator();
+				appp.start();
 		},
 
 		routes: {

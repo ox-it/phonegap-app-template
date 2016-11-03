@@ -30,16 +30,22 @@
         <link rel="stylesheet" type="text/css" href="css/app.css" />
         <link rel="stylesheet" type="text/css" href="css/phonon/phonon.css" />
         <link rel="stylesheet" type="text/css" href="css/phonon/panels.css" />
+        <link rel="stylesheet" type="text/css" href="css/phonon/side-panels.css" />
         <title>Hello World</title>
     </head>
     <body class="myapp">
-    	<header id="header" class="header-bar"></header>
-		<div class="content"></div>
-	    <script>
-		    require(['app/main'], function(App) {
-				App.initialize();
-			})
-	    </script>
+      <home data-page="true">
+        <header id="header" class="header-bar"></header>
+        <div class="content"></div>
+        <div class="side-panel side-panel-right" data-expose-aside="none" data-disable="left" data-page="home" id="side-menu"></div>
+        <script>
+          require(['app/main'], function(App) {
+            App.initialize();
+          })
+        </script>
+      </home>
+      <!--  phonon converts this to a panel. it is populated in nav_menu_template.handlebars-->
+      <div class="side-panel side-panel-right" data-expose-aside="none" data-disable="left" data-page="home" id="side-menu"></div>
     </body>
 
 </html>

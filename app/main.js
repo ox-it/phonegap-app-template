@@ -17,8 +17,11 @@ define([
 				//callback for tests
 				console.log("Device ready");
 
-				//don't allow phonon to take over the window location hash
-				phonon.navigator({useHash:false})
+				// don't allow phonon to take over the window location hash
+				phonon.navigator({
+					useHash:false,
+					defaultPage: 'home',
+				})
 
 				//configure Layoutmanager to manage views by default
 				Backbone.Layout.configure({ manage:true });
