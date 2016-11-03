@@ -7,7 +7,7 @@ define([
 			Backbone, 
 			exampleTemplate,
 			phonon,
-			panels
+			panel
 ) {
 
 	var ExampleView = Backbone.View.extend({
