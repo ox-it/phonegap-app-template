@@ -69,7 +69,9 @@ define([
 				showBack: false,
 				showNavMenuButton: true,
 			});
-			var allView = new AllView({el:$('.content'), collection:this.examples});
+
+			var allView = new AllView({collection:this.examples});
+			this.contentView.setView(allView);
 			allView.render();
 		},
 		

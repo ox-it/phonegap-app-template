@@ -28,7 +28,11 @@ define([
 		},
 		
 		dopopup: function (ev) {
-			panel('#panelTest').open();
+			phonon.panel('#panelTest').open();
+		},
+		
+		cleanup: function () {
+			phonon.panel('#panelTest').close();
 		}
 	});
 	
