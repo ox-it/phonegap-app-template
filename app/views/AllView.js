@@ -1,11 +1,13 @@
 define([
 	'backbone',
 	'hbs!app/templates/all',
-	'phonon-core'
+	'phonon-core',
+	'phonon/panels'
 ], function (
 	Backbone,
 	allTemplate,
-	phonon
+	phonon,
+	panel
 ) {
 	
 	var AllView = Backbone.View.extend({
@@ -26,7 +28,7 @@ define([
 		},
 		
 		dopopup: function (ev) {
-			phonon.panel('#panelTest').open();
+			panel('#panelTest').open();
 		}
 	});
 	
