@@ -24,15 +24,6 @@ define([
 			var data = this.model.toJSON();
 			return data;
 		},
-
-		events: {
-			"click .thing": "onclickthing"
-		},
-		
-		onclickthing: function (ev) {
-			panel('#panelTest').open();
-		}
-
 	});
 
 	return ExampleView;

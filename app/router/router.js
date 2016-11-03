@@ -31,7 +31,8 @@ define([
 
 		///routes
 		home: function() {
-			var allView = new AllView({el:$('.content'), collection:this.examples});
+			var allView = new AllView({collection:this.examples});
+			this.contentView.setView(allView);
 			allView.render();
 		},
 		
