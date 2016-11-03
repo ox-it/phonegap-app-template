@@ -49,13 +49,9 @@ define([
 				backLink: null,
 				confirmBack: false,
 				backCallback: null,
-				backLabel: 'Back',
 				showNavMenu: false,
 				showNavMenuButton: true,
 				actionButton: null,
-				footerButtons:[],
-				footerNavigation:false,
-				floatingFooterButton: null,
 			});
 			
 			//call the relevant function
