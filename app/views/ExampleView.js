@@ -29,6 +29,10 @@ define([
 			"click .thing": "onclickthing"
 		},
 		
+		testActionButton: function () {
+			console.log("Test Action Button");
+		},
+		
 		onclickthing: function (ev) {
 			panel('#panelTest').open();
 		}

@@ -74,16 +74,21 @@ define([
 		},
 		
 		thing: function (id) {
-			App.UIStateModel.set({ 
-				showBack: true,
-				confirmBack: false,
-				showNavMenuButton: true,
-				actionButton: false,
-			});
 			var thing = this.examples.get(id);
 			var thingView = new ExampleView({model:thing});
 			this.contentView.setView(thingView);
 			thingView.render();
+			App.UIStateModel.set({
+				showBack: true,
+				confirmBack: false,
+				showNavMenuButton: false,
+				actionButton: { 
+					text: "action",
+					callback: thingView.testActionButton,
+					href: null,
+				},
+				href: null,
+			});
 		}
 
 	});
