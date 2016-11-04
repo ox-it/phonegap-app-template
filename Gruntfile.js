@@ -187,6 +187,10 @@
                             dest: "www/css/phonon/panels.css"
                         },
                         {
+                            src: ["app/libs/Phonon-Framework/dist/css/components/side-panels.css"],
+                            dest: "www/css/phonon/side-panels.css"
+                        },
+                        {
                             expand: true,
                             flatten: true,
                             src: ["app/libs/Phonon-Framework/dist/fonts/*"],
@@ -205,6 +209,12 @@
                           "css/**"
                         ],
                     dest: "www" },
+                {   src: ["node_modules/requirejs-babel/es6.js"],
+                    dest: "www/node_modules/requirejs-babel/es6.js"
+                },
+                {   src: ["node_modules/requirejs-babel/babel-5.8.34.min.js"],
+                    dest: "www/node_modules/requirejs-babel/babel-5.8.34.min.js"
+                },
                 {   src: ["require.config.js"],
                     dest: "www/require.config.js" },
                 {   src: ["index.html"],
