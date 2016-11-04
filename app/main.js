@@ -2,18 +2,26 @@ define([
 			'backbone', 
 			'underscore', 
 			'layoutmanager', 
-			'es6!app/router/router'
+			'es6!app/router/router',
+			'phonon-core'
 		], function(
 			Backbone, 
 			_, 
 			Layout, 
-			Router
+			Router,
+			phonon
 ){
 
 		var App = {
 			onDeviceReady: function() {
 				//callback for tests
 				console.log("Device ready");
+
+				// don't allow phonon to take over the window location hash
+				phonon.navigator({
+					useHash:false,
+					defaultPage: 'home',
+				})
 
 				//configure Layoutmanager to manage views by default
 				Backbone.Layout.configure({ manage:true });

@@ -1,9 +1,13 @@
 define([
 			'backbone', 
-			'hbs!app/templates/example_template'
+			'hbs!app/templates/example_template',
+			'phonon-core',
+			'phonon/panels'
 		], function(
 			Backbone, 
-			exampleTemplate
+			exampleTemplate,
+			phonon,
+			panel
 ) {
 
 	var ExampleView = Backbone.View.extend({
@@ -21,8 +25,10 @@ define([
 			return data;
 		},
 
-		events: {},
-
+		
+		testActionButton: function () {
+			console.log("Test Action Button");
+		}
 	});
 
 	return ExampleView;

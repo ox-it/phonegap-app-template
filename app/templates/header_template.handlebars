@@ -1,0 +1,14 @@
+{{#if showBack}}
+  <a href="#{{backLink}}" id="header-back" class="btn pull-left icon icon-chevron-left"></a>
+{{/if}}
+
+<div class="center">
+  <h1  class="title"><a href="#" id="header-home" class="ui-btn"></a>{{headerText}}</h1>
+</div>
+
+{{#if showActionButton}}
+	<a href="{{actionButton.href}}" id="nav-menu-action" class="btn pull-right">{{actionButton.text}}</a>
+{{/if}}
+{{#if showNavMenuButton}}
+  <button id="nav-menu-button" class="btn pull-right icon icon-menu" data-side-panel-id="side-home"></button>
+{{/if}}

@@ -1,3 +1,13 @@
-div {
-  background-color: transparent;
+.myapp {
+	header {
+		background-color: red;
+	}
+	
+	// side menu
+	#side-menu {
+		.active-menu {
+			font-weight: bold;
+		}
+	}
+	
 }

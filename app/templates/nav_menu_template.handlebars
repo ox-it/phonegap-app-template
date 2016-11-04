@@ -1,0 +1,14 @@
+	<header class="header-bar">
+		<button class="btn pull-right icon icon-close" data-side-panel-close="true"></button>
+		<div class="pull-left">
+			<h1 class="title">Panel</h1>
+		</div>
+	</header>
+
+	<div class="content">
+		<ul class="list">
+			{{#each links}}
+				<li {{#if current}} class="active-menu"{{/if}}><a href='#{{route}}' class="padded-list">{{label}}</a></li>
+			{{/each}}
+		</ul>
+	</div>
