@@ -19,5 +19,5 @@
     </gap:config-file>
     <plugin name="cordova-plugin-device" spec="~1.1.2" />
     <plugin name="cordova-hot-code-push-plugin" spec="~1.5.0" />
-    <plugin name="cordova-hot-code-push-local-dev-addon" spec="~0.3.0" />
+    <plugin name="cordova-hot-code-push-local-dev-addon" spec="~0.4.2" />
 </widget>
