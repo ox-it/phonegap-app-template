@@ -25,7 +25,7 @@ define([
 				this.headerView.render();
 				this.navMenuView = new NavMenuView({ el:$('#side-menu'), model:App.UIStateModel });
 				this.navMenuView.render();
-				this.contentView = new Backbone.View({el: $('.content')});
+				this.contentView = new Backbone.View({el: $('.app-content')});
 				
 				//start the app
 				this.examples = new ExamplesCollection();
