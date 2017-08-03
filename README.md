@@ -14,8 +14,8 @@ This template follows the structure and style used in applications such as [Sens
 * **Jasmine** testing
 
 ### Prerequisites:
-[npm] (https://nodejs.org/en/)
-[SASS and Compass] (http://thesassway.com/beginner/getting-started-with-sass-and-compass)
+[npm](https://node.js.org)
+[SASS and Compass](http://thesassway.com/beginner/getting-started-with-sass-and-compass)
 
 bower: run `npm install -g bower`
 
