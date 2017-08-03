@@ -20,7 +20,7 @@ This template follows the structure and style used in applications such as [Sens
 
 bower: run `npm install -g bower`
 
-For running on Devices or native emulators:
+#### For running on Devices or native emulators:
 
 [Android Studio](https://developer.android.com/studio/index.html)
 
