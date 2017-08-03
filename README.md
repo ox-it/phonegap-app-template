@@ -15,6 +15,7 @@ This template follows the structure and style used in applications such as [Sens
 
 ### Prerequisites:
 [npm](https://node.js.org)
+
 [SASS and Compass](http://thesassway.com/beginner/getting-started-with-sass-and-compass)
 
 bower: run `npm install -g bower`
