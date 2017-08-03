@@ -13,8 +13,13 @@ This template follows the structure and style used in applications such as [Sens
 * **RequireJS** module management
 * **Jasmine** testing
 
+### Prerequisites:
+[npm] (https://nodejs.org/en/)
+[SASS and Compass] (http://thesassway.com/beginner/getting-started-with-sass-and-compass)
+
+bower: run `npm install -g bower`
+
 ### Installation
-Assumes bower is installed, if not run `npm install -g bower`
 
 Clone the project:
 ```
